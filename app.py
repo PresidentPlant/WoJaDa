@@ -3,11 +3,11 @@ from flask import Flask, render_template, request, flash, redirect
 app = Flask(__name__)
 
 @app.route('/homepage')
-def landing_page():
+def homepage():
     return render_template("index.html")
 
-@app.route("/registration", methods=["GET", "POST"])
-def registration():
+@app.route("/register", methods=["GET", "POST"])
+def register():
     if request.method == "GET":
         flash("Enter Details to Register")
         return render_template("register.html")
@@ -18,10 +18,11 @@ def registration():
         password = request.form["password"]
         if name == "" or email == "" or password == "" or dob == "":
             flash("Please fill out the missing fields")
-        return redirect("/registration")
+        return redirect("/register")
 
-# def login():
-
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    pass
 
 
 if __name__ == "__main__":
