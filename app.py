@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, flash, redirect
 
 app = Flask(__name__)
+@app.route('/')
+def landing_page():
+    return redirect('/homepage')
 
 @app.route('/homepage')
 def homepage():
@@ -22,7 +25,10 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    pass
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+    return render_template("login.html")
 
 
 if __name__ == "__main__":
