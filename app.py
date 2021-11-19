@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash, redirect
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = '4ff01a6d28154e8e97b58b7ec333d91c'
 @app.route('/')
 def landing_page():
     return redirect('/homepage')
